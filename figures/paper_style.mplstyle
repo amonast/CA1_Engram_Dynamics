@@ -1,0 +1,13 @@
+axes.titlesize : 15
+axes.labelsize : 10
+axes.linewidth: 1
+lines.linewidth : 2
+lines.markersize : 4
+xtick.labelsize : 9
+ytick.labelsize : 9
+legend.fontsize : 9
+legend.title_fontsize: 9
+pdf.fonttype: 42
+ps.fonttype: 42
+font.family: Verdana
+svg.fonttype: none
