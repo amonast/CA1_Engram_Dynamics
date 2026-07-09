@@ -44,7 +44,7 @@ Per animal, builds a running-composition-matched baseline epoch (sampled to matc
 
 **`tone/pairwise_corr_utils.py`** — Figure 5F (supporting module)
 
-Utility functions used by `pairwise_corr_cstrace_behmatch_concat.py`: epoch/mask construction from time windows, equal-time frame sampling for behavior matching, the core pairwise correlation computation (`pairwise_corr_epochs`), a bootstrap baseline correlation routine, and a diagnostic plot of epoch selection over the velocity trace.
+Utility functions used by `pairwise_corr_cstrace_behmatch_concat.py`: epoch/mask construction from time windows, equal-time frame sampling for behavior matching, the core pairwise correlation computation (`pairwise_corr_epochs`), and a diagnostic plot of epoch selection over the velocity trace.
 
 **`tone/plot_corr_cstrace_behmatch_concat.py`** — Figure 5F
 
