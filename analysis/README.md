@@ -8,6 +8,10 @@ This folder contains the analysis scripts and notebooks used to generate the qua
 
 Quantifies mCherry intensity relative to each cell's local background by scaling each cell's ROI 1.5x around its center of mass, subtracting the original ROI from this expanded ROI to isolate a surrounding background region, and dividing mean soma intensity by the mean background intensity to yield the Relative Fluorescence metric.
 
+**`mcherry/percent_leaky.py`** — Supplementary Figure 1D
+
+Computes the percentage of "leaky" mCherry-positive cells (flagged by `remove_bad_cells`) among all cells and among cells registered across sessions, and plots the leaky vs. non-leaky proportions as pie charts.
+
 ## Event Rate
 
 **`event_rate/get_rates_all.py`** — Figures 2-3
