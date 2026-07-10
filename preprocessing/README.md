@@ -38,19 +38,6 @@ Base_directory/
 | `TSeries_g` | GCaMP TSeries folder name for this animal/FOV/session |
 | `TSeries_mch` | mCherry TSeries folder name for this animal/FOV/session |
 
-**Subfolders created by each step:**
-
-| Step | Subfolder(s) created |
-|---|---|
-| 1. Metadata & Raw Image Preprocessing | `Ref/` (within each raw TSeries folder); resized TIFFs into `GCaMP/Animal/TSeries/` and `mCherry/Animal/TSeries/` |
-| 2. Motion Correction | `GCaMP/Animal/caiman_output/motion_correct/` |
-| 3. mCherry Registration | Registered images/movies saved alongside the raw files within `mCherry/Animal/TSeries/` |
-| 4. CNMF | `GCaMP/Animal/caiman_output/cnmf/` |
-| 5. Calcium Trace Deconvolution | `deconvolution/dff_files_*/`, `deconvolution/deconvolution_results/` |
-| 7. Multi-Day Registration | `CellReg/Animal_FOV/` (footprints + CellReg output); `Tagging/CellReg_output/` (`reg_indices.csv`) |
-| 9. mCherry Cell Classification | `Tagging/mcherry_threshold_plots/Animal_FOV/`; `Tagging/mcherry_thresholds.csv`; `Tagging/indices_split.csv`; `ROIs/all_rois/Animal_FOV/` |
-| 10. Behavior | Reads from `Behavior/Wheel_csvs/` (no new output subfolder) |
-
 ## 1. Metadata & Raw Image Preprocessing
 
 **`fiji_macros/preprocess_for_fiji.py`** — Moves XML, `.env`, and References metadata files out of each TSeries folder into a `Ref` subfolder so Fiji doesn't slow down loading the raw images.
@@ -70,6 +57,8 @@ Base_directory/
 **`motion_correction/motion_correct_job.py`** — Cluster batch-job version of GCaMP motion correction, run from the command line per animal/session/FOV, with support for multiple parameter sets or repeated rounds of correction.
 
 **`motion_correction/motion_correct_2color_single.ipynb`** — Interactive notebook for two-color (GCaMP/mCherry) motion correction and channel alignment on a single session, used for troubleshooting.
+
+**`visualization/play_movie.py`** — Interactively plays back a raw or motion-corrected movie (single-color GCaMP or two-color GCaMP/mCherry) for a user-selected TSeries, for visually checking motion correction quality.
 
 Motion corrected outputs are saved to `BaseDirectory/GCaMP/Animal_subfolders/caiman_output/motion_correct/`.
 
@@ -135,9 +124,11 @@ After mCherry classification, the final data table of cell indices (`indices_spl
 
 ## 10. Behavior: Wheel Position & Velocity
 
-**`behavior/running.py`**
+**`behavior/running.py`** — Parses raw running-wheel encoder data and converts it into velocity, rest/run state, and percent-time-behavior metrics aligned to imaging frames. Raw wheel position is loaded and cleaned, aligned to imaging frame times using the TSeries XML metadata, converted to velocity via a sliding window, thresholded to remove noise, and then segmented into discrete rest/run epochs and summary percent-time-behavior statistics per animal/FOV/session.
 
-Parses raw running-wheel encoder data and converts it into velocity, rest/run state, and percent-time-behavior metrics aligned to imaging frames. Raw wheel position is loaded and cleaned, aligned to imaging frame times using the TSeries XML metadata, converted to velocity via a sliding window, thresholded to remove noise, and then segmented into discrete rest/run epochs and summary percent-time-behavior statistics per animal/FOV/session.
+**`behavior/timestamps.py`** — Computes and loads imaging frame times and, for tone/trace fear conditioning sessions, CS onset/offset times: reads the voltage TTL recording and XML acquisition metadata for a TSeries, thresholds the voltage trace to detect tone events, and saves/reloads frame and tone timestamps as `.npz` files.
+
+**`behavior/save_timestamps.py`** — Entry-point script that calls `write_timestamps` (from `timestamps.py`) to compute and save timestamps for a given animal/session.
 
 ---
 *This README was generated with the assistance of Claude (Anthropic).*

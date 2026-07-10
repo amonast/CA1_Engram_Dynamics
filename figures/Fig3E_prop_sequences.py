@@ -10,7 +10,6 @@ from utilities.animal import animal
 import ast
 import matplotlib.pyplot as plt
 plt.style.use('/Users/amonast/Documents/GitHub/CA1_Engram_Dynamics/figures/paper_style.mplstyle')
-
 import pandas as pd
 
 palette = {'engram':"#F37343", 'nonengram':"#06ABC8"}
@@ -98,7 +97,7 @@ df_long = pd.wide_to_long(
                             sep="_",
                             suffix=".*"
                         ).reset_index()  
-save_path = '/Users/amonast/BOSTON UNIVERSITY Dropbox/Amy Monasterio/Manuscripts/Engram2P/Figures/RevisionFigures/Round2'
+save_path = '/Users/amonast/Documents/GitHub/CA1_Engram_Dynamics/figures'
 # %%
 df_long['ani_fov']=df_long['animal']+'_'+df_long['fov']
 fc = df_long.loc[df_long['group']=='FC']#.groupby(['animal','cell_type','session']).mean(['propSeq','propPop']).reset_index()
@@ -125,15 +124,11 @@ plt.legend(frameon=False,bbox_to_anchor=(1,1))
 plt.title('FC')
 sb.despine()
 plt.savefig(f"{save_path}/Fig3E_propSequece_FC.svg",transparent=True)
+
 #%%
-model = smf.mixedlm("propSeq ~ cell_type * session", 
-                    data=fc,  
-                    groups="animal", 
-                    vc_formula={"fov": "0 + C(ani_fov)"})  # random intercepts per fov               
-                    
-result = model.fit()
-print(result.summary())
-##%%
+pg.rm_anova(data=fc,dv='propSeq',within=['session','cell_type'],
+                  subject='ani_fov')
+#%%
 pg.pairwise_tests(data=fc,dv='propSeq',within=['session','cell_type'],
                   padjust='fdr_bh',
                   subject='ani_fov')
@@ -156,31 +151,10 @@ plt.ylabel('Proportion of \n  Sequence-Active Cells')
 plt.title('HC')
 sb.despine()
 plt.savefig(f"{save_path}/Fig3E_propSequece_HC.svg",transparent=True)
-
 #%%
-# model = smf.mixedlm("propSeq ~ cell_type * session", 
-#                     data=hc,  
-#                     groups="animal", 
-#                     vc_formula={"fov": "0 + C(ani_fov)"})  # random intercepts per fov               
-                    
-# result = model.fit()
-
-# print(result.summary())
-##%%
+pg.rm_anova(data=hc,dv='propSeq',within=['session','cell_type'],
+                  subject='ani_fov')
+#%%
 pg.pairwise_tests(data=hc,dv='propSeq',within=['session','cell_type'],
                   padjust='fdr_bh',
                   subject='ani_fov')
-#%%
-fig,ax=plt.subplots(figsize=(2,2))
-sb.boxplot(data=fc,
-           y='propPop',
-           x='session',
-           hue='cell_type',
-           ax=ax,
-           palette=palette)
-plt.legend(frameon=False,bbox_to_anchor=(1,1))
-plt.ylabel('Proportion of Population \n  Recruited to Sequences')
-plt.tight_layout()
-plt.title('FC')
-sb.despine()
-#plt.savefig()
