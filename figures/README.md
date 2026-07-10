@@ -28,29 +28,29 @@ Plots cell footprints sorted/colored by event-rate decile, using per-animal deci
 
 **`Fig2B-C.ipynb`** — **Figure 2B-C**
 
-Plots event rate by decile, using the combined rates table from [`analysis/event_rate/combine_cohorts_rates.ipynb`](../analysis/event_rate/combine_cohorts_rates.ipynb).
+Plots event rate by decile.
 
 **`Fig2D-F_decile_v_ptag-baseline.ipynb`** — **Figure 2D-F**
 
-Plots baseline event-rate decile vs. proportion tagged, using the same combined rates table.
+Plots baseline event-rate decile vs. proportion tagged.
 
 **`Fig2G_deciles_rest&run.ipynb`** — **Figure 2G**
 
-Plots event-rate deciles split by rest vs. run epochs, using the rest/run rate tables from `combine_cohorts_rates.ipynb`.
+Plots event-rate deciles split by rest vs. run epochs.
 
 **`Fig2H-I_animalmean_RestvRun.ipynb`** — **Figure 2H-I**
 
-Plots animal-averaged rest vs. run event rates by decile.
+Plots event-rate deciles split by rest vs. run epochs, split by FC and HC.
 
 ## Figure 3
 
 **`Fig3_Rates.ipynb`** — **Figure 3A-C**
 
-Plots event rate distributions/comparisons (histograms, violin/point plots) using the combined rates tables from [`analysis/event_rate/`](../analysis/event_rate/).
+Plots event rate distributions/comparisons (histograms, violin/point plots).
 
 **`Fig3D_rastermap.ipynb`** — **Figure 3D**
 
-Plots Rastermap-sorted activity (dF/F and event rasters) using the sort order computed by [`analysis/rastermap/run_rastermap.py`](../analysis/rastermap/run_rastermap.py).
+Plots Rastermap-sorted activity (dF/F and event rasters) using the sort order computed by rastermap.
 
 **`Fig3E_prop_sequences.py`** — **Figure 3E**
 
@@ -68,7 +68,7 @@ Plots an example cell-pair correlation network graph (`networkx`) from a saved p
 
 **`Fig4B.ipynb`** — **Figure 4B**
 
-Plots Day 0 vs. Day 4  Riemannian distance using the output of [`analysis/correlation/D0_D4_Riemannian_Distance_CFC_rest_matched.py`](../analysis/correlation/D0_D4_Riemannian_Distance_CFC_rest_matched.py).
+Plots Day 0 vs. Day 4  Riemannian distance in CFC mice.
 
 **`Fig4C-D.ipynb`** — **Figure 4C-D**
 
@@ -104,7 +104,7 @@ Descriptive statistics and plots for cell registration (CellReg) quality/yield.
 
 **`SuppFig1E_percent_leaky.py`** — **Supplementary Figure 1E**
 
-Plots the percentage of "leaky" mCherry-positive cells computed by [`analysis/mcherry/percent_leaky.py`](../analysis/mcherry/percent_leaky.py).
+Plots the percentage of "leaky" mCherry-positive cells.  
 
 **`SuppFig2_cellreg_suppl_plots.ipynb`**, **`SuppFig2D_deconvolution_suppl_plots.ipynb`** — **Supplementary Figure 2**
 
@@ -116,11 +116,11 @@ Documents the Bayesian model equations (no data processing).
 
 **`SuppFig4B-D.ipynb`** — **Supplementary Figure 4B-D**
 
-Plots Bayesian model outputs/diagnostics using the combined event-rate tables from [`analysis/event_rate/`](../analysis/event_rate/).
+Plots HB-GLM model outputs/diagnostics.
 
 **`SuppFig5B-C.ipynb`** — **Supplementary Figure 5B-C**
 
-Plots rest/run event-rate comparisons using the combined rest/run rate tables.
+Plots rest/run event-rate comparisons and percent time running.
 
 **`SuppFig6A-B.ipynb`**, **`SuppFig6D_corr_animals_tot.ipynb`**, **`SuppFig6E_corr_animals_rest_equal.ipynb`**, **`SuppFig6E_corr_animals_run_equal.ipynb`**, **`SuppFig6F-G.ipynb`** — **Supplementary Figure 6**
 
