@@ -1,6 +1,6 @@
 # CA1 Engram Dynamics
 
-Code accompanying the manuscript *[Manuscript title]* ([Author list]; [bioRxiV, Year]; [https://doi.org/10.1101/2024.04.16.589790](https://doi.org/10.1101/2024.04.16.589790)).
+Code accompanying the manuscript [https://doi.org/10.1101/2024.04.16.589790](https://doi.org/10.1101/2024.04.16.589790)).
 
 This repository contains the preprocessing pipeline, analysis code, and figure-generation notebooks/scripts used to produce the results in the paper. Processed imaging data (cell traces) and behavioral (freezing/velocity) can be found at : [].
 
